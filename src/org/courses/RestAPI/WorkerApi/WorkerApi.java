@@ -3,6 +3,8 @@ package org.courses.RestAPI.WorkerApi;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.xml.bind.JAXBElement;
+
 import org.courses.R;
 import org.courses.RestAPI.Backend.GetResponseCallback;
 import org.courses.RestAPI.Backend.GetTask;
@@ -38,10 +40,11 @@ public class WorkerApi
         }).execute();
     }
 	
-	public void postUserProfile(stubs.PointToSend point, final PostResponceCallback<String> callback)
+	public void postPoint(stubs.PointToSend point, final PostResponceCallback<String> callback)
 	{
 		String restUrl = "http://ssfirsttest.cloudapp.net/WHPP-worker/rest/mobile/put_point";
-		String requestBody = " ";//Utils.serializeProfileAsString(profile);
+//		JAXBElement<stubs.PointToSend> pt = JAXBElement<>
+		String requestBody =  "";//Utils.serializeProfileAsString(profile);
 		new PostTask(restUrl, requestBody, 
 		new RestTaskCallback()
 		{
@@ -49,6 +52,6 @@ public class WorkerApi
 			{
 				callback.onPostSuccess(response);
 			}
-		});
+		}).execute();
 	}
 }
