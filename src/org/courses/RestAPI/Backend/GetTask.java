@@ -6,6 +6,7 @@ package org.courses.RestAPI.Backend;
 
 import android.os.AsyncTask;
 import java.io.IOException;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,6 +15,7 @@ public class GetTask extends AsyncTask<String, String, String>
 
     private String mRestUrl;
     private RestTaskCallback mCallback;
+    private Map<String, String> mHparams;
 
     /**
      * Creates a new instance of GetTask with the specified URL and callback.
@@ -23,10 +25,11 @@ public class GetTask extends AsyncTask<String, String, String>
      * completes.
      *
      */
-    public GetTask(String restUrl, RestTaskCallback callback)
+    public GetTask(String restUrl, Map<String, String> hparams, RestTaskCallback callback)
     {
         this.mRestUrl = restUrl;
         this.mCallback = callback;
+        this.mHparams = hparams;
     }
 
     @Override
@@ -34,14 +37,13 @@ public class GetTask extends AsyncTask<String, String, String>
     {
     	
     	android.os.Debug.waitForDebugger();
-    	//android.os.Debug.waitingForDebugger()
-        String response = null;
+    	String response = null;
         try
         {
             //create url...
             //String url;
 
-            response = RestBase.httpGet(mRestUrl);
+            response = RestBase.httpGet(mRestUrl, mHparams);
         } catch (IOException ex)
         {
             Logger.getLogger(GetTask.class.getName()).log(Level.SEVERE, null, ex);

@@ -25,15 +25,15 @@ public class SomeApi
     public void getUserProfile(String userName, final GetResponseCallback<String> callback)
     {
 //        String restUrl = Utils.constructRestUrlForProfile(userName);
-        new GetTask("https://www.google.com/search?hl=en&q=ol", new RestTaskCallback ()
-        {
-            @Override
-            public void onTaskComplete(String response)
-            {
-//                Profile profile = Utils.parseResponseAsProfile(response);
-                callback.onDataReceived(response);
-            }
-        }).execute();
+//        new GetTask("https://www.google.com/search?hl=en&q=ol", new RestTaskCallback ()
+//        {
+//            @Override
+//            public void onTaskComplete(String response)
+//            {
+////                Profile profile = Utils.parseResponseAsProfile(response);
+//                callback.onDataReceived(response);
+//            }
+//        }).execute();
     }
 
     /**

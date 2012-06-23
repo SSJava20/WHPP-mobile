@@ -15,7 +15,7 @@
     <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Login:"
+            android:text="LoginId:"
             android:textSize="13pt"/>
             <!--android:id="userLoginEditText"-->
 
@@ -23,17 +23,21 @@
     <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/loginEdit"
+            android:inputType="number"/>
             />
+    
     <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Password:"
-            android:textSize="13pt"/>
-            <!--android:id="userPasswordEditText"-->
-
+            android:textSize="13pt"
+            />
+           
 
 
     <EditText
+       		android:id="@+id/passEdit"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"/>

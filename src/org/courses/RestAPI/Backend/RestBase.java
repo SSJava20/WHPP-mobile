@@ -4,16 +4,22 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.Map;
 
 public class RestBase
 {
 
-    public static String httpGet(String urlStr) throws IOException
+    public static String httpGet(String urlStr, Map<String, String> hparams) throws IOException
     {
         URL url = new URL(urlStr);
-        HttpURLConnection conn =
-                (HttpURLConnection) url.openConnection();
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
 
+        for (Map.Entry<String, String> entry: hparams.entrySet()) 
+        {
+        	conn.setRequestProperty(entry.getKey(), URLEncoder.encode(entry.getValue(), "UTF-8"));
+        }
+        
         if (conn.getResponseCode() != 200)
         {
             throw new IOException(conn.getResponseMessage());
@@ -49,9 +55,9 @@ public class RestBase
                 "application/x-www-form-urlencoded");
         
         // Create the form content
-//        OutputStream out = conn.getOutputStream();
-//        Writer writer = new OutputStreamWriter(out, "UTF-8");
-//        writer.write(dataToPost);
+        OutputStream out = conn.getOutputStream();
+        Writer writer = new OutputStreamWriter(out, "UTF-8");
+        writer.write(dataToPost);
 //        
 ////        for (int i = 0; i < paramName.length; i++)
 ////        {
@@ -62,8 +68,8 @@ public class RestBase
 ////        }
 ////        writer.write(str)
 //        
-//        writer.close();
-//        out.close();
+        writer.close();
+        out.close();
 
         if (conn.getResponseCode() != 200)
         {
