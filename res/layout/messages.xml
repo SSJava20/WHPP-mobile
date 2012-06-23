@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent">
+
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Previous point:"
+            android:textSize="13pt"
+            />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Next point:"
+        android:textSize="13pt"
+        />
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:textSize="13pt"
+            android:text="Send Track Message"
+            android:onClick="sendTrackMessage"
+            android:layout_weight = "1"
+            />
+
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:textSize="13pt"
+            android:text="Send Warning Message"
+            android:onClick="sendWarningMessage"
+            android:layout_weight = "1"
+            android:background="#aa0000"
+            />
+
+
+</LinearLayout>
