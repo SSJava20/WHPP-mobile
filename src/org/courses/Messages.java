@@ -5,6 +5,7 @@ import org.courses.RestAPI.Backend.PostResponceCallback;
 import org.courses.RestAPI.Backend.RestBase;
 import org.courses.RestAPI.TestApi.AzureAPI;
 import org.courses.RestAPI.TestApi.SomeApi;
+import org.courses.RestAPI.WorkerApi.WorkerApi;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -34,33 +35,17 @@ public class Messages extends Activity
     public void sendTrackMessage(View view)
     {
         //if Send message
-    	AzureAPI.getInstance().getAuthorizationToken("WHPPServiceBus", "owner", "OTUSJ7fJBhEqWGwFdunLLbZA/45AeMxeDcSkH+4O418=",
+    	WorkerApi wapi = WorkerApi.getInstance();
+    	wapi.postPoint(null, 
     			new PostResponceCallback<String>() 
     			{
-					
 					@Override
 					public void onPostSuccess(String responce) 
 					{
-						Toast.makeText(getApplicationContext(), responce, Toast.LENGTH_LONG).show();
+						// TODO Auto-generated method stub
 						
-					}
-				});
-    	
-//		SomeApi myApi = SomeApi.getInstance();
-//		myApi.getUserProfile("techie.curious", new GetResponseCallback<String>() 
-//				{
-//
-//		    @Override
-//			public
-//		    void onDataReceived(String data) 
-//		    {
-//		    	Toast.makeText(getApplicationContext(), data, Toast.LENGTH_LONG).show();
-//		        //Use the profile to display it on screen, etc.
-//		    }
-//
-//		});
-//                String res = RestBase.httpGet("https://www.google.com/search?hl=en&q=ol");
-//                Toast.makeText(getApplicationContext(), res, Toast.LENGTH_LONG).show();
+					}    		
+    			});
     }
 
     public void sendWarningMessage(View view)
