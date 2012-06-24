@@ -31,13 +31,13 @@ public class AzureAPI
 							  "&wrap_name=" + URLEncoder.encode(issuerName, "UTF-8") +
 							  "&wrap_password=" + URLEncoder.encode(issuerPassword, "UTF-8");
 			
-			new PostTask(acsBaseAddress, postData, new RestTaskCallback() 
-				{
-		            public void onTaskComplete(String response)
-		            {
-		                callback.onPostSuccess(response);
-		            }
-		        }).execute();    
+//			new PostTask(acsBaseAddress, postData, , new RestTaskCallback() 
+//				{
+//		            public void onTaskComplete(String response)
+//		            {
+//		                callback.onPostSuccess(response);
+//		            }
+//		        }).execute();    
 			
 			
 		} catch (UnsupportedEncodingException e) 

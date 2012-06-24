@@ -23,21 +23,18 @@ public class LoginPage extends Activity
 
     public void checkLogin(View view)
     {
-        if(auth())
-        {
-            Intent i = new Intent(this, Messages.class);
-		    startActivity(new Intent(getApplicationContext(), Messages.class));
-        }
-        //view.getLayoutParams().
-    }
-
-    protected Boolean auth()
-    {
     	EditText  edLog = (EditText) findViewById(R.id.loginEdit);
     	EditText  edPass = (EditText) findViewById(R.id.passEdit);
     	
+        Toast.makeText(getApplicationContext(), R.string.try_login, Toast.LENGTH_LONG).show();
+        authAndGetMap(edLog.getText().toString(), edPass.getText().toString());        
+        //view.getLayoutParams().
+    }
+
+    protected void authAndGetMap(String userId, String userPass)
+    {
         WorkerApi wapi = WorkerApi.getInstance();
-        wapi.getMap(edLog.getText().toString(), PasswordHash.getHash(edPass.getText().toString()), 
+        wapi.getMap(userId, getApplicationContext(), PasswordHash.getHash(userPass), 
         new GetResponseCallback<String>() 
        	{
 			
@@ -45,11 +42,14 @@ public class LoginPage extends Activity
 			public void onDataReceived(String data) 
 			{
 				// TODO Auto-generated method stub
-				Toast.makeText(getApplicationContext(), data, Toast.LENGTH_LONG).show();
+//				Toast.makeText(getApplicationContext(), data, Toast.LENGTH_LONG).show();
+				Intent intent = new Intent(getApplicationContext(), Messages.class);
+				
+				intent.putExtra(Messages.ROUTE, data);
+				
+				startActivity(intent);
 			}
 		});
-        
-        return true;
-
+       
     }
 }

@@ -11,13 +11,22 @@
             android:text="Previous point:"
             android:textSize="13pt"
             />
+
     <TextView
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Next point:"
-        android:textSize="13pt"
-        />
+        android:textSize="13pt" />
+
+    <TextView
+        android:id="@+id/pointName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="13pt" />
+
     <Button
+        	android:id="@+id/btSendTrackMsg"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:textSize="13pt"

@@ -1,5 +1,8 @@
 package org.courses;
 
+import org.courses.RestAPI.Backend.PostResponceCallback;
+import org.courses.RestAPI.WorkerApi.WorkerApi;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,17 +26,19 @@ public class InputWarningMessage extends Activity
 
     public void sendWarningMessage(View view)
     {
-        //EditText edittext = (EditText) findViewById(R.layout.);
-        //if Send message
-//        try
-//        {
-//            AzureMessageManager.sendMessage("warning wheee");
-//            Toast.makeText(getApplicationContext(), R.string.sent_warning_message, Toast.LENGTH_LONG).show();
-//        } catch (ServiceException e)
-//        {
-//            Toast.makeText(getApplicationContext(), R.string.sent_message_failed, Toast.LENGTH_LONG).show();
-//            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-//        }
-
+    	EditText msgEdit = (EditText) findViewById(R.id.inputWarning);
+    	
+    	WorkerApi wapi = WorkerApi.getInstance();
+    	wapi.postWarningMessage(msgEdit.getText().toString(), getApplicationContext(), 
+    			new PostResponceCallback<String>() 
+    			{
+			
+					@Override
+					public void onPostSuccess(String responce) 
+					{
+						// TODO Auto-generated method stub
+						Toast.makeText(getApplicationContext(), R.string.sent_warning_message, Toast.LENGTH_LONG).show();
+					}
+    			});
     }
 }

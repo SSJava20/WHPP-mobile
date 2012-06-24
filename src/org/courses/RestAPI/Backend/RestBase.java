@@ -39,7 +39,7 @@ public class RestBase
         return sb.toString();
     }
 
-    public static String httpPost(String restURL, String dataToPost) throws Exception
+    public static String httpPost(String restURL, String dataToPost) throws IOException
     //, String[] paramName, String[] paramVal) throws Exception
     {
         URL url = new URL(restURL);

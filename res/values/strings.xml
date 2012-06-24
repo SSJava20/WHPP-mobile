@@ -3,6 +3,8 @@
     <string name="app_name">WHPP_mobile</string>
     <string name="sent_message">Your message was successfully sent</string>
     <string name="sent_message_failed">There is something going wrong. Your message wasn\'t sent.</string>
+    <string name="arrived">Congratulations on your arrival. Thank you for your service.</string>
     <string name="sent_warning_message">Your warning message was successfully sent</string>
+    <string name="try_login">Trying to log in and get map.</string>
     <string name="get_route_uri">http://ssfirsttest.cloudapp.net/WHPP-worker/rest/mobile/get_route</string>
 </resources>

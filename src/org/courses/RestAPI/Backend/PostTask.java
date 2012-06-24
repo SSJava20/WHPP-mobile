@@ -4,10 +4,15 @@
  */
 package org.courses.RestAPI.Backend;
 
+import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.Toast;
+
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import org.courses.R;
 
 /**
  *
@@ -23,6 +28,7 @@ public class PostTask extends AsyncTask<String, String, String>
     private String mRestUrl;
     private RestTaskCallback mCallback;
     private String mRequestBody;
+    private Context mContext;
 
     /**
      * Creates a new instance of PostTask with the specified URL, callback, and
@@ -34,11 +40,12 @@ public class PostTask extends AsyncTask<String, String, String>
      * @param requestBody The body of the POST request.
      *
      */
-    public PostTask(String restUrl, String requestBody, RestTaskCallback callback)
+    public PostTask(String restUrl, String requestBody, Context vcontext, RestTaskCallback callback)
     {
         this.mRestUrl = restUrl;
         this.mRequestBody = requestBody;
         this.mCallback = callback;
+        this.mContext = vcontext;
     }
 
     @Override
@@ -52,8 +59,9 @@ public class PostTask extends AsyncTask<String, String, String>
             //String url;
 
             response = RestBase.httpPost(mRestUrl, mRequestBody);
-        } catch (Exception ex)
+        } catch (IOException ex)
         {
+            Toast.makeText(mContext, R.string.sent_message_failed, Toast.LENGTH_LONG).show();
             Logger.getLogger(PostTask.class.getName()).log(Level.SEVERE, null, ex);
         }
         //Use HTTP Client APIs to make the call.
