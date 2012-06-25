@@ -18,6 +18,9 @@ import android.widget.Toast;
  */
 public class InputWarningMessage extends Activity
 {
+    public static final String UID = "uid";
+    public static final String UPASSH = "phash";
+    
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
@@ -29,7 +32,9 @@ public class InputWarningMessage extends Activity
     	EditText msgEdit = (EditText) findViewById(R.id.inputWarning);
     	
     	WorkerApi wapi = WorkerApi.getInstance();
-    	wapi.postWarningMessage(msgEdit.getText().toString(), getApplicationContext(), 
+        Bundle extras = getIntent().getExtras();
+        
+    	wapi.postWarningMessage(extras.getString(UID), extras.getString(UPASSH), msgEdit.getText().toString(), getApplicationContext(), 
     			new PostResponceCallback<String>() 
     			{
 			

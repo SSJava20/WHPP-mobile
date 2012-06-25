@@ -4,8 +4,8 @@
  */
 package org.courses.RestAPI.WorkerApi;
 
+//import ae.javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -34,7 +34,7 @@ public class stubs
         MESSAGE_WARNING
     }
     
-    @XmlRootElement
+//    @XmlRootElement
     class PointToSend
     {
         private Long id;

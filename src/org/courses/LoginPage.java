@@ -13,6 +13,9 @@ import android.widget.Toast;
 
 public class LoginPage extends Activity
 {
+    private String uid;
+    private String uPassHash;
+    
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -34,7 +37,9 @@ public class LoginPage extends Activity
     protected void authAndGetMap(String userId, String userPass)
     {
         WorkerApi wapi = WorkerApi.getInstance();
-        wapi.getMap(userId, getApplicationContext(), PasswordHash.getHash(userPass), 
+        uid = userId;
+        uPassHash = PasswordHash.getHash(userPass);
+        wapi.getMap(userId, uPassHash, getApplicationContext(), 
         new GetResponseCallback<String>() 
        	{
 			
@@ -46,6 +51,8 @@ public class LoginPage extends Activity
 				Intent intent = new Intent(getApplicationContext(), Messages.class);
 				
 				intent.putExtra(Messages.ROUTE, data);
+                                intent.putExtra(Messages.UID, uid);
+                                intent.putExtra(Messages.UPASSH, uPassHash);
 				
 				startActivity(intent);
 			}

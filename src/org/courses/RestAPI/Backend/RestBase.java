@@ -39,7 +39,7 @@ public class RestBase
         return sb.toString();
     }
 
-    public static String httpPost(String restURL, String dataToPost) throws IOException
+    public static String httpPost(String restURL, String dataToPost, Map<String, String> hparams) throws IOException
     //, String[] paramName, String[] paramVal) throws Exception
     {
         URL url = new URL(restURL);
@@ -52,7 +52,11 @@ public class RestBase
         conn.setUseCaches(false);
         conn.setAllowUserInteraction(false);
         conn.setRequestProperty("Content-Type",
-                "application/x-www-form-urlencoded");
+                "text/xml");
+        for (Map.Entry<String, String> entry: hparams.entrySet()) 
+        {
+        	conn.setRequestProperty(entry.getKey(), URLEncoder.encode(entry.getValue(), "UTF-8"));
+        }
         
         // Create the form content
         OutputStream out = conn.getOutputStream();
@@ -71,7 +75,7 @@ public class RestBase
         writer.close();
         out.close();
 
-        if (conn.getResponseCode() != 200)
+        if (!(conn.getResponseCode() == 200 || conn.getResponseCode() == 201))
         {
             throw new IOException(conn.getResponseMessage());
         }

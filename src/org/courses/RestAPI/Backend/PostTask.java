@@ -9,6 +9,7 @@ import android.os.AsyncTask;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,6 +30,7 @@ public class PostTask extends AsyncTask<String, String, String>
     private RestTaskCallback mCallback;
     private String mRequestBody;
     private Context mContext;
+    private Map<String, String> mHparams;
 
     /**
      * Creates a new instance of PostTask with the specified URL, callback, and
@@ -40,12 +42,13 @@ public class PostTask extends AsyncTask<String, String, String>
      * @param requestBody The body of the POST request.
      *
      */
-    public PostTask(String restUrl, String requestBody, Context vcontext, RestTaskCallback callback)
+    public PostTask(String restUrl, String requestBody, Map<String, String> hparams, Context vcontext, RestTaskCallback callback)
     {
         this.mRestUrl = restUrl;
         this.mRequestBody = requestBody;
         this.mCallback = callback;
         this.mContext = vcontext;
+        this.mHparams = hparams;
     }
 
     @Override
@@ -58,7 +61,7 @@ public class PostTask extends AsyncTask<String, String, String>
             //create url...
             //String url;
 
-            response = RestBase.httpPost(mRestUrl, mRequestBody);
+            response = RestBase.httpPost(mRestUrl, mRequestBody, mHparams);
         } catch (IOException ex)
         {
             Toast.makeText(mContext, R.string.sent_message_failed, Toast.LENGTH_LONG).show();
