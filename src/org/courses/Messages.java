@@ -70,8 +70,9 @@ public class Messages extends Activity
     protected void arrive()
     {
         Button btn = (Button) findViewById(R.id.btSendTrackMsg);
-        btn.setActivated(false);
+        btn.setEnabled(Boolean.FALSE);
         Toast.makeText(getApplicationContext(), R.string.arrived, Toast.LENGTH_LONG).show();
+        changeName("Arrived");
     }
 
     protected void changeName(String name)
@@ -96,10 +97,13 @@ public class Messages extends Activity
                         {
                             Toast.makeText(getApplicationContext(), R.string.sent_message, Toast.LENGTH_LONG).show();
                             activeRoute.getRoutepointList().remove(0);
-
+                            
                             if (activeRoute.getRoutepointList().isEmpty())
                             {
                                 arrive();
+                            }else
+                            {
+                                changeName(activeRoute.getRoutepointList().get(0).getName());
                             }
                         }
                     });
