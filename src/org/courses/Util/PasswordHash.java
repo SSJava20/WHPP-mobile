@@ -16,7 +16,7 @@ public class PasswordHash
 	       MessageDigest digest=null;
 	    try 
 	    {
-	        digest = MessageDigest.getInstance("SHA-256");
+	        digest = MessageDigest.getInstance("MD5");
 	    } catch (NoSuchAlgorithmException e1) 
 	    {
 	        // TODO Auto-generated catch block

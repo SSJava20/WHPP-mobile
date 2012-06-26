@@ -6,5 +6,7 @@
     <string name="arrived">Congratulations on your arrival. Thank you for your service.</string>
     <string name="sent_warning_message">Your warning message was successfully sent</string>
     <string name="try_login">Trying to log in and get map.</string>
+    <string name="unauthorized">Wrong login or password.</string>
+    <string name="no_data">There no routes for you.</string>
     <string name="get_route_uri">http://ssfirsttest.cloudapp.net/WHPP-worker/rest/mobile/get_route</string>
 </resources>

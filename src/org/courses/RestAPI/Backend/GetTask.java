@@ -51,7 +51,8 @@ public class GetTask extends AsyncTask<String, String, String>
             response = RestBase.httpGet(mRestUrl, mHparams);
         } catch (IOException ex)
         {
-            Toast.makeText(mContext, R.string.sent_message_failed, Toast.LENGTH_LONG).show();
+            response = ex.getMessage();
+//            Toast.makeText(mContext, R.string.sent_message_failed, Toast.LENGTH_LONG).show();
             Logger.getLogger(GetTask.class.getName()).log(Level.SEVERE, null, ex);
         }
         //Use HTTP Client APIs to make the call.

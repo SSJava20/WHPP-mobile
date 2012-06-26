@@ -36,7 +36,7 @@ public class WorkerApi
 
     public void getMap(String userName, String userPassHash, Context vcontext, final GetResponseCallback<String> callback)
     {
-        String restUrl = "http://ssfirsttest.cloudapp.net/WHPP-worker/rest/mobile/get_route";
+        String restUrl = "http://ssfirsttest.cloudapp.net/WHPP-worker-web/rest/mobile/get_route";
         Map<String, String> hparams = new HashMap<String, String>();
         hparams.put("user_login", userName);
         hparams.put("user_pass", userPassHash);
@@ -56,7 +56,7 @@ public class WorkerApi
     {
         try
         {
-            String restUrl = "http://ssfirsttest.cloudapp.net/WHPP-worker/rest/mobile/put_point";
+            String restUrl = "http://ssfirsttest.cloudapp.net/WHPP-worker-web/rest/mobile/put_point";
 
 
             Map<String, String> hparams = new HashMap<String, String>();
@@ -91,7 +91,7 @@ public class WorkerApi
 
     public void postWarningMessage(String userName, String userPassHash, String message, Context vcontext, final PostResponceCallback<String> callback)
     {
-        String restUrl = "http://ssfirsttest.cloudapp.net/WHPP-worker/rest/mobile/put_warning_msg";
+        String restUrl = "http://ssfirsttest.cloudapp.net/WHPP-worker-web/rest/mobile/put_warning_msg";
 
         Map<String, String> hparams = new HashMap<String, String>();
         hparams.put("user_login", userName);

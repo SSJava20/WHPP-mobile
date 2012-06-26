@@ -20,9 +20,11 @@ public class RestBase
         	conn.setRequestProperty(entry.getKey(), URLEncoder.encode(entry.getValue(), "UTF-8"));
         }
         
-        if (conn.getResponseCode() != 200)
+        Integer response = conn.getResponseCode();
+        if (response != 200)
         {
-            throw new IOException(conn.getResponseMessage());
+            
+            throw new IOException(response.toString());
         }
 
         // Buffer the result into a string
